@@ -17,6 +17,7 @@ hold on;
 plot(fitresult); 
 xlabel('Time in Minutes');
 ylabel('Movement (raw actigaph)');
+ylim([0 max(Y)]);
 title('Double Harmonic Regression of Activity (with period)')
 hold off;
 
