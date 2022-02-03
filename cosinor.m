@@ -1,5 +1,7 @@
 function tau = cosinor(Y)
 
+validateattributes(Y,{'double'},{'2d'})
+
 %%% OUTPUT: graph of vector Y including double harmonic fit and tau
 %%% INPUT: Y is a vector containing raw actigraphy data (double)
 
@@ -15,7 +17,7 @@ hold on;
 plot(fitresult); 
 xlabel('Time in Minutes');
 ylabel('Movement (raw actigaph)');
-title('Double Harmonic Regression of Activity to determine Tau')
+title('Double Harmonic Regression of Activity (with period)')
 hold off;
 
 omega = abs(fitresult.w);

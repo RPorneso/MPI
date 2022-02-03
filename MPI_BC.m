@@ -4,6 +4,9 @@
 %%% comma as delimiter. The space between the column header and the data
 %%% was likewise deleted.
 
+clear all
+clc
+
 patient = readtable("C1045.xls");
 control = readtable("P1045.xls");
 
@@ -67,12 +70,13 @@ plot(ave_bin_mean)
 
 %% STEP 4: Calculate and plot correlation of activity and light exposure
 
-[Rsq, Rsq_p] = R_acti_wrgb(bin_1hr_control);                               % input can be any timetable
-                                                                           % from STEP 3.     
+[Rsq, Rsq_p] = R_acti_wrgb(bin_1hr_patient);                               % input can be any timetable
+                                                                           % from STEP 3; Note: 30m bins
+                                                                           % regression line not plotted
 
 %% STEP 5: Determine period of activity and fit data points with double harmonic curve
 
-tau = cosinor(control.Activity);                                           % input can be patient.Activity
+tau = cosinor(patient.Activity);                                           % input can be patient.Activity
 
 %% END
 
