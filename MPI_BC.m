@@ -71,7 +71,7 @@ plot(ave_bin_mean)
 %% STEP 4: Calculate and plot correlation of activity and light exposure
 
 [Rsq, Rsq_p] = R_acti_wrgb(bin_1hr_patient);                               % input can be any timetable
-                                                                           % from STEP 3; 
+                                                                           % from STEP 3
 
 %% STEP 5: Determine period of activity and fit data points with double harmonic curve
 
