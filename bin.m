@@ -4,16 +4,17 @@ function [bin_1hr_patient, bin_30min_patient, bin_1min_patient,...
 validateattributes(X,{'table'},{'ncols',12})
 validateattributes(Y,{'table'},{'ncols',12})
 
-%%% OUTPUT: graphs (and timetables) of averaged activity and light exposure 
+%%% OUTPUT: graphs and timetables of averaged activity and light exposure 
 %%%         across days binned per hour, 30 minutes and 1 minute.
 %%%
 %%% INPUTS:
 %%% X: loaded actigraphy raw file from chronic insomnia.
 %%% Y: loaded actigraphy raw file from healthy bed partner.
-%%% Both tables should include Line, Date, Time, DateTime, Activity
-%%% and IntervalStatus.
+%%% Both tables should include Line, Date, Time, DateTime, Activity, WRGB
+%%% Light and IntervalStatus.
 %%% Line (double) is row # starting with 1.
 %%% Activity (double) is the actigraphy raw movement count.
+%%% WRGBLight  (double) is the light exposure detected by software.
 %%% IntervalStatus is the ACTIVE, REST, REST-S designation from the
 %%%                 actigraph software.
 %%% Date, Time and Datetime are in datetime format.

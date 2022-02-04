@@ -7,8 +7,8 @@
 clear all
 clc
 
-patient = readtable("C1045.xls");
-control = readtable("P1045.xls");
+patient = readtable("C1057.xls");
+control = readtable("P1057.xls");
 
 %% STEP 2: Plot and test nocturnal actigraphy data (chronic insomina vs control)
 
@@ -33,10 +33,10 @@ clear bin_mean
 clear ave_bin_mean
 
 m = unique(patient.Date);
-m([1 9])=[];
+m([1 size(m(:,1))])=[];
 r = 60;                                                                    % # of rows to average (60, 30, 1)
 s = 24;                                                                    % # of bins per day (24, 48, 1440)
-day=nan(s,7);
+day=nan(s,length(m));
 
 for i = 1:length(m)
     a = m(i,1);
@@ -59,7 +59,7 @@ end
 ave_bin_mean = nan(s,1);
 
 for i = 1:s
-    ave_bin_mean(i,1) = mean(day(i,1:7),'omitnan');
+    ave_bin_mean(i,1) = mean(day(i,1:size(m)),'omitnan');
 end
 
 % plot ave hourly activity across days
