@@ -23,11 +23,12 @@ for i = 3:6
     scatter(x,y,'o', color(i));
     xlabel('Movement (acti raw)','FontSize', 14, 'FontWeight','bold');
     ylabel('Light Exposure (lux)', 'FontSize', 14, 'FontWeight','bold');
-    Fit = polyfit(x,y,1);
+    idx = isnan(y);
+    Fit = polyfit(x(~idx),y(~idx),1);
     rl = refline(Fit(1),Fit(2));
     rl.Color = color(i,1);
     rl.LineWidth = 2;
-    [b,~,~,~,stats] = regress(y(:),[ones(size(x(:))),x(:)]);                % R and p-val
+    [b,~,~,~,stats] = regress(y(:),[ones(size(x(:))),x(:)]);                % R^2 and p-val
     Rsq(i,1) = stats(1);
     Rsq_p(i,1) = stats(3);
     hold on;

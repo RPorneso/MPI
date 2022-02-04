@@ -4,10 +4,10 @@ validateattributes(X,{'table'},{'ncols',12})
 validateattributes(Y,{'table'},{'ncols',12})
 
 %%% OUTPUT: graph of nocturnal activity of X (red) and Y (blue)
-%%%         across sleep episodes including sleepstart/end for X
-%%%         and Ys to be used to check full sleep episodes per night.
+%%%         across sleep periods including sleepstart/end for X
+%%%         and Ys to be used to check full sleep period per night.
 %%%         This function also includes Wilcoxon Rank-sum Test of the 
-%%%         nocturnal activity of Xs vs health Ys.
+%%%         nocturnal activity of X vs Y.
 %%%
 %%% INPUTS:
 %%% X: loaded actigraphy raw file from chronic insomnia.
@@ -30,13 +30,13 @@ X.Date.Format = 'dd.MM.uuuu HH:mm';
 X.Time.Format = 'dd.MM.uuuu HH:mm';
 X.Datetime = X.Date + timeofday(X.Time);                                    % added field for plotting
 
-% patient: find all sleep episodes in full dataset
+% patient: find all sleep periods in full dataset
 
 index = ismember(X.IntervalStatus, 'REST');
 index2 = ismember(X.IntervalStatus, 'REST-S');
 ind = index|index2;
 
-% patient: get row index of ALL REST & REST-S (all sleep episodes in 9.5 days)
+% patient: get row index of ALL REST & REST-S (all sleep periods in 9.5 days)
 
 x = find(ind);              
 evening = X(x,:);
